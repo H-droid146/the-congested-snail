@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151d">
+  <meta name="description" content="The Congested Snail — a cozy, dark arcade for browser games, quick challenges, and indie discoveries.">
+  <title>The Congested Snail — Browser Arcade</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="The Congested Snail home">
+      <span class="brand-mark" aria-hidden="true">🐌</span>
+      <span class="brand-copy"><strong>THE CONGESTED SNAIL</strong><small>YOUR LITTLE CORNER OF PLAY</small></span>
+    </a>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="#library">Game library</a>
+      <a href="#built-in">Built-in arcade</a>
+      <a href="#websites">Game websites</a>
+    </nav>
+    <button id="themeButton" class="icon-button" aria-label="Toggle theme" title="Toggle theme">☼</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="status-dot"></span> THE ARCADE IS OPEN</div>
+        <h1>Small breaks.<br><span>Big fun.</span></h1>
+        <p>A hand-picked launchpad for browser games, tiny challenges, and your next favorite distraction.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#built-in">Play built-in games <span>↗</span></a>
+          <a class="button button-quiet" href="#library">Explore library</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="gameCount">12</strong><span>games & links</span></div>
+          <div><strong id="favoriteCount">0</strong><span>your favorites</span></div>
+          <div><strong id="playedCount">0</strong><span>recent plays</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Decorative snail mascot">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="planet planet-a"></div><div class="planet planet-b"></div>
+        <div class="snail-shell">🐌</div>
+        <div class="floating-chip chip-one">★ YOUR NEXT FAVORITE</div>
+        <div class="floating-chip chip-two">PRESS PLAY</div>
+      </div>
+    </section>
+
+    <section class="quick-strip" aria-label="Quick categories">
+      <button class="quick-card" data-quick="Arcade"><span class="quick-icon purple">✦</span><span><strong>Arcade</strong><small>Quick & classic</small></span><b>↗</b></button>
+      <button class="quick-card" data-quick="Racing"><span class="quick-icon orange">➤</span><span><strong>Racing</strong><small>Put the pedal down</small></span><b>↗</b></button>
+      <button class="quick-card" data-quick="Puzzle"><span class="quick-icon green">▦</span><span><strong>Puzzle</strong><small>Give your brain a go</small></span><b>↗</b></button>
+      <button class="quick-card" data-quick="Action"><span class="quick-icon blue">⚡</span><span><strong>Action</strong><small>Fast-paced fun</small></span><b>↗</b></button>
+    </section>
+
+    <section id="built-in" class="section">
+      <div class="section-heading">
+        <div><div class="eyebrow">MADE FOR THIS SITE</div><h2>Built-in arcade<span class="heading-period">.</span></h2><p>These mini-games run right here — no external game site needed.</p></div>
+        <span class="section-count">02 MINI GAMES</span>
+      </div>
+      <div class="built-grid">
+        <article class="built-card snake-card">
+          <div class="built-card-art snake-art"><div class="pixel-board"><span>●</span><span>●</span><span>●</span><i>◆</i></div><span class="art-tag">CLASSIC</span></div>
+          <div class="built-card-copy"><div class="game-meta"><span>ARCADE</span><span>·</span><span>1 PLAYER</span></div><h3>Snail Trail</h3><p>Guide your little trail, collect dots, and try not to run into yourself.</p><button class="button button-primary full-width" data-open-game="snake">Play Snail Trail <span>→</span></button></div>
+        </article>
+        <article class="built-card memory-card">
+          <div class="built-card-art memory-art"><div class="memory-preview"><span>✦</span><span>?</span><span>☾</span><span>?</span><span>?</span><span>✦</span></div><span class="art-tag">BRAIN BREAK</span></div>
+          <div class="built-card-copy"><div class="game-meta"><span>PUZZLE</span><span>·</span><span>SOLO</span></div><h3>Match Stack</h3><p>Flip the cards, find matching pairs, and clear the board in as few moves as you can.</p><button class="button button-primary full-width" data-open-game="memory">Play Match Stack <span>→</span></button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="library" class="section">
+      <div class="section-heading">
+        <div><div class="eyebrow">FIND YOUR NEXT GAME</div><h2>The game shelf<span class="heading-period">.</span></h2><p>Search the collection or narrow it down by vibe.</p></div>
+        <span class="section-count" id="resultsCount">12 TITLES</span>
+      </div>
+      <div class="library-tools">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search games, genres, vibes…" autocomplete="off"><kbd>/</kbd></label>
+        <div class="filter-row" id="filterRow">
+          <button class="filter-chip active" data-filter="All">All games</button>
+          <button class="filter-chip" data-filter="Arcade">Arcade</button>
+          <button class="filter-chip" data-filter="Racing">Racing</button>
+          <button class="filter-chip" data-filter="Puzzle">Puzzle</button>
+          <button class="filter-chip" data-filter="Action">Action</button>
+          <button class="filter-chip" data-filter="Strategy">Strategy</button>
+          <button class="filter-chip" data-filter="Favorites">♥ Favorites</button>
+          <button class="filter-chip" data-filter="Recent">↺ Recent</button>
+        </div>
+      </div>
+      <div id="gameGrid" class="game-grid" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state hidden"><div>◌</div><h3>No games found</h3><p>Try another search or switch categories.</p><button class="button button-quiet" id="resetFilters">Reset filters</button></div>
+    </section>
+
+    <section id="websites" class="section external-section">
+      <div class="section-heading">
+        <div><div class="eyebrow">MORE PLACES TO PLAY</div><h2>Beyond the snail<span class="heading-period">.</span></h2><p>Explore independent gaming platforms. External sites open separately.</p></div>
+        <span class="section-count">EXTERNAL LINKS</span>
+      </div>
+      <div class="external-grid">
+        <a class="external-card" href="https://poki.com/" target="_blank" rel="noopener noreferrer"><span class="external-logo poki">P</span><span><strong>Poki</strong><small>Casual, racing & multiplayer</small></span><b>↗</b></a>
+        <a class="external-card" href="https://www.crazygames.com/" target="_blank" rel="noopener noreferrer"><span class="external-logo crazy">C</span><span><strong>CrazyGames</strong><small>Action, 3D & browser games</small></span><b>↗</b></a>
+        <a class="external-card" href="https://www.coolmathgames.com/" target="_blank" rel="noopener noreferrer"><span class="external-logo cool">C</span><span><strong>Coolmath Games</strong><small>Puzzles & clever challenges</small></span><b>↗</b></a>
+        <a class="external-card" href="https://itch.io/games/html5" target="_blank" rel="noopener noreferrer"><span class="external-logo itch">i</span><span><strong>itch.io HTML5</strong><small>Indie games you can play online</small></span><b>↗</b></a>
+      </div>
+      <p class="site-note">External links are provided for convenience. Their availability depends on each provider and your network's rules.</p>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="footer-brand" href="#">🐌 THE CONGESTED SNAIL</a><span>Made for little breaks and big imaginations.</span><a href="#top" id="backTop">Back to top ↑</a></footer>
+
+  <div id="gameModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel">
+      <div class="modal-header"><div><div class="eyebrow">THE CONGESTED SNAIL ARCADE</div><h2 id="modalTitle">Game</h2></div><button class="icon-button" data-close-modal aria-label="Close game">✕</button></div>
+      <div id="modalBody" class="modal-body"></div>
+      <div class="modal-footer"><span id="gameInstructions">Have fun!</span><button class="button button-quiet" data-close-modal>Close game</button></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
