@@ -10,7 +10,9 @@ const GAMES = [
  {id:"littlealchemy",title:"Little Alchemy 2",category:"Puzzle",description:"Combine elements to discover new things.",symbol:"⚗️",colors:["#8b77c5","#4b3c7d"],kind:"external",url:"https://littlealchemy2.com/",badge:"PUZZLE"},
  {id:"shellshock",title:"Shell Shockers",category:"Action",description:"Egg-themed online arena shooter.",symbol:"🥚",colors:["#d6a347","#7f4b2c"],kind:"external",url:"https://shellshock.io/",badge:"ACTION"},
  {id:"drift",title:"Drift Hunters",category:"Racing",description:"Tune a car and practice your drifting.",symbol:"🏎️",colors:["#bd6545","#60314a"],kind:"external",url:"https://www.drifthunters.com/",badge:"RACING"},
- {id:"2048",title:"2048",category:"Puzzle",description:"Slide numbered tiles and combine them.",symbol:"🔢",colors:["#d6a45e","#8d5d36"],kind:"external",url:"https://play2048.co/",badge:"PUZZLE"}
+ {id:"2048",title:"2048",category:"Puzzle",description:"Slide numbered tiles and combine them.",symbol:"🔢",colors:["#d6a45e","#8d5d36"],kind:"external",url:"https://play2048.co/",badge:"PUZZLE"},
+ {id:"school-chat",title:"Chat",category:"Strategy",description:"Open the Google Sites page you use at school.",symbol:"💬",colors:["#4b8bba","#273b70"],kind:"external",url:"https://sites.google.com/students.chccs.k12.nc.us/chat?pli=1&authuser=0",badge:"YOUR SITE"},
+ {id:"zen-xyz",title:"Zen XYZ",category:"Arcade",description:"Open your Zen XYZ Google Sites page.",symbol:"🕹️",colors:["#9a6fe8","#432c70"],kind:"external",url:"https://sites.google.com/view/zen-xyz/home",badge:"YOUR SITE"}
 ];
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];

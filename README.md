@@ -56,3 +56,8 @@ Edit the `GAMES` array near the top of `script.js`. Each game object has:
 - `badge`: small label on the cover
 
 External sites may change or restrict access over time. Check links before sharing the site.
+
+
+### Added links
+
+The library and external-sites section now include the Chat and Zen XYZ Google Sites URLs supplied by the site owner. These links open in a new tab; their availability depends on the network and site settings.
