@@ -1,6 +1,9 @@
 const GAMES = [
  {id:"snake",title:"Snail Trail",category:"Arcade",description:"Collect dots and keep your trail clear.",symbol:"🐌",colors:["#30452c","#192a2a"],kind:"builtin",badge:"BUILT IN"},
  {id:"memory",title:"Match Stack",category:"Puzzle",description:"Flip cards and find every matching pair.",symbol:"✦",colors:["#4c3e7c","#24243e"],kind:"builtin",badge:"BUILT IN"},
+ {id:"clickdash",title:"Click Dash",category:"Arcade",description:"Race the clock and see how many clicks you can score in 10 seconds.",symbol:"⚡",colors:["#e7a34a","#8b3c50"],kind:"builtin",badge:"BUILT IN"},
+ {id:"reaction",title:"Reaction Rush",category:"Arcade",description:"Wait for the green signal, then test your reflexes.",symbol:"🟢",colors:["#36b77c","#174e4c"],kind:"builtin",badge:"BUILT IN"},
+ {id:"tictactoe",title:"Tiny Tic-Tac-Toe",category:"Strategy",description:"A classic two-player game for one screen.",symbol:"⭕",colors:["#7d8fe5","#3e367c"],kind:"builtin",badge:"BUILT IN"},
  {id:"poki",title:"Poki Game Library",category:"Arcade",description:"A big collection of casual browser games.",symbol:"🟡",colors:["#f9c846","#e96954"],kind:"external",url:"https://poki.com/",badge:"WEB"},
  {id:"crazy",title:"CrazyGames",category:"Action",description:"Explore action, 3D, and multiplayer games.",symbol:"🎮",colors:["#1ebda2","#165a65"],kind:"external",url:"https://www.crazygames.com/",badge:"WEB"},
  {id:"coolmath",title:"Coolmath Games",category:"Puzzle",description:"Puzzles, logic games, and clever challenges.",symbol:"🧩",colors:["#2985c5","#203f8a"],kind:"external",url:"https://www.coolmathgames.com/",badge:"WEB"},
@@ -12,13 +15,29 @@ const GAMES = [
  {id:"drift",title:"Drift Hunters",category:"Racing",description:"Tune a car and practice your drifting.",symbol:"🏎️",colors:["#bd6545","#60314a"],kind:"external",url:"https://www.drifthunters.com/",badge:"RACING"},
  {id:"2048",title:"2048",category:"Puzzle",description:"Slide numbered tiles and combine them.",symbol:"🔢",colors:["#d6a45e","#8d5d36"],kind:"external",url:"https://play2048.co/",badge:"PUZZLE"},
  {id:"school-chat",title:"Chat",category:"Strategy",description:"Open the Google Sites page you use at school.",symbol:"💬",colors:["#4b8bba","#273b70"],kind:"external",url:"https://sites.google.com/students.chccs.k12.nc.us/chat?pli=1&authuser=0",badge:"YOUR SITE"},
- {id:"zen-xyz",title:"Zen XYZ",category:"Arcade",description:"Open your Zen XYZ Google Sites page.",symbol:"🕹️",colors:["#9a6fe8","#432c70"],kind:"external",url:"https://sites.google.com/view/zen-xyz/home",badge:"YOUR SITE"}
+ {id:"zen-xyz",title:"Zen XYZ",category:"Arcade",description:"Open your Zen XYZ Google Sites page.",symbol:"🕹️",colors:["#9a6fe8","#432c70"],kind:"external",url:"https://sites.google.com/view/zen-xyz/home",badge:"YOUR SITE"},
+ {id:"chesscom",title:"Chess.com",category:"Strategy",description:"Play chess puzzles and matches against people or bots.",symbol:"♟️",colors:["#83b96d","#2c533d"],kind:"external",url:"https://www.chess.com/",badge:"STRATEGY"},
+ {id:"tetrio",title:"TETR.IO",category:"Arcade",description:"A fast modern take on falling-block puzzle battles.",symbol:"🟦",colors:["#4c94e8","#292e68"],kind:"external",url:"https://tetr.io/",badge:"ARCADE"},
+ {id:"garticphone",title:"Gartic Phone",category:"Multiplayer",description:"A silly drawing-and-guessing party game for groups.",symbol:"✏️",colors:["#ee8baf","#7e427a"],kind:"external",url:"https://garticphone.com/",badge:"MULTIPLAYER"},
+ {id:"boardgamearena",title:"Board Game Arena",category:"Strategy",description:"Play digital versions of board games with friends.",symbol:"🎲",colors:["#d9ad62","#79532f"],kind:"external",url:"https://boardgamearena.com/",badge:"BOARD GAMES"},
+ {id:"wordle",title:"Wordle",category:"Word",description:"Guess the five-letter word in six tries.",symbol:"🔤",colors:["#6b9c67","#35553d"],kind:"external",url:"https://www.nytimes.com/games/wordle/index.html",badge:"WORD"},
+ {id:"solitaire",title:"Solitaire Bliss",category:"Casual",description:"Take a quiet break with classic solitaire card games.",symbol:"🃏",colors:["#438e72","#1e4b43"],kind:"external",url:"https://solitairebliss.com/",badge:"CASUAL"},
+ {id:"jigsaw",title:"Jigsaw Explorer",category:"Puzzle",description:"Build jigsaw puzzles from a wide selection of pictures.",symbol:"🧩",colors:["#5f9fc4","#34527e"],kind:"external",url:"https://www.jigsawexplorer.com/",badge:"PUZZLE"},
+ {id:"agar",title:"Agar.io",category:"Multiplayer",description:"Grow your cell and try to outlast other players.",symbol:"🟣",colors:["#8f79d8","#34316c"],kind:"external",url:"https://agar.io/",badge:"MULTIPLAYER"},
+ {id:"scratch",title:"Scratch Games",category:"Casual",description:"Discover games and creations made by the Scratch community.",symbol:"🐱",colors:["#f4a64b","#b95840"],kind:"external",url:"https://scratch.mit.edu/explore/projects/games/",badge:"COMMUNITY"},
+ {id:"doodle",title:"Google Doodle Games",category:"Casual",description:"Play fun interactive games from Google Doodles.",symbol:"🎨",colors:["#5c9fe6","#3b4c91"],kind:"external",url:"https://doodles.google/",badge:"CASUAL"},
+ {id:"littlebigsnake",title:"Little Big Snake",category:"Multiplayer",description:"A colorful online snake game with progression and rivals.",symbol:"🐍",colors:["#6dbd69","#27543c"],kind:"external",url:"https://littlebigsnake.com/",badge:"MULTIPLAYER"},
+ {id:"minigolf",title:"Mini Golf Games",category:"Sports",description:"Browse mini-golf and other sports games on Poki.",symbol:"⛳",colors:["#6dbb7b","#2d6856"],kind:"external",url:"https://poki.com/en/sports",badge:"SPORTS"}
 ];
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 let activeFilter="All";
 let favorites=new Set(readStorage("snailFavorites",[]));
 let recent=readStorage("snailRecent",[]);
+let savedRequests=readStorage("snailRequests",[]);
+let reactionTimeout=null;
+let clickDashTimer=null;
+let tttState=null;
 let activeGame=null;
 let snakeTimer=null;
 let snakeState=null;
@@ -45,17 +64,19 @@ function renderGames(){
  $("#gameCount").textContent=GAMES.length;
  $("#favoriteCount").textContent=favorites.size;
  $("#playedCount").textContent=recent.length;
+ const names=recent.map(id=>GAMES.find(g=>g.id===id)?.title).filter(Boolean);
+ $("#historySummary").textContent=names.length?`Recently played: ${names.slice(0,4).join(" · ")}${names.length>4?` · +${names.length-4} more`:""}`:"Your recent games will show up here.";
 }
 function setFilter(filter){activeFilter=filter;$$(".filter-chip").forEach(b=>b.classList.toggle("active",b.dataset.filter===filter));renderGames();if(filter!=="All")$("#library").scrollIntoView({behavior:"smooth",block:"start"})}
-function recordPlay(id){recent=[id,...recent.filter(x=>x!==id)].slice(0,6);saveStorage();renderGames()}
+function recordPlay(id){recent=[id,...recent.filter(x=>x!==id)].slice(0,12);saveStorage();renderGames()}
 function openGame(id){
  const game=GAMES.find(g=>g.id===id);if(!game)return;
  recordPlay(id);
  if(game.kind==="external"){window.open(game.url,"_blank","noopener,noreferrer");return}
  activeGame=id;$("#gameModal").classList.remove("hidden");document.body.style.overflow="hidden";
- if(id==="snake")renderSnake();if(id==="memory")renderMemory();
+ if(id==="snake")renderSnake();else if(id==="memory")renderMemory();else if(id==="clickdash")renderClickDash();else if(id==="reaction")renderReaction();else if(id==="tictactoe")renderTicTacToe();
 }
-function closeModal(){stopSnake();$("#gameModal").classList.add("hidden");document.body.style.overflow="";activeGame=null}
+function closeModal(){stopSnake();if(clickDashTimer){clearInterval(clickDashTimer);clickDashTimer=null}if(reactionTimeout){clearTimeout(reactionTimeout);reactionTimeout=null}$("#gameModal").classList.add("hidden");document.body.style.overflow="";activeGame=null}
 function stopSnake(){if(snakeTimer){clearInterval(snakeTimer);snakeTimer=null}}
 function renderSnake(){
  $("#modalTitle").textContent="Snail Trail";
@@ -114,6 +135,41 @@ function flipMemory(i){
  }
 }
 function paintMemoryTile(i){const b=$(`[data-card="${i}"]`);if(!b||!memoryState)return;const shown=memoryState.opened.includes(i)||memoryState.matched.has(i);b.textContent=shown?memoryState.deck[i]:"?";b.classList.toggle("revealed",shown&&!memoryState.matched.has(i));b.classList.toggle("matched",memoryState.matched.has(i));b.setAttribute("aria-label",shown?`Card ${memoryState.deck[i]}`:`Hidden card ${i+1}`)}
+function renderClickDash(){
+ $("#modalTitle").textContent="Click Dash";$("#gameInstructions").textContent="Tap as fast as you can for 10 seconds.";
+ $("#modalBody").innerHTML=`<div class="game-shell mini-game"><div class="game-toolbar"><span>TIME <strong id="dashTime">10</strong>s</span><span>CLICKS <strong id="dashScore">0</strong></span></div><button id="dashTarget" class="dash-target" type="button">START!</button><p id="dashMessage" class="game-help">Ready? Press start, then click quickly!</p><button id="dashAgain" class="button button-quiet" type="button">Restart</button></div>`;
+ let score=0,started=false,left=10;const target=$("#dashTarget");
+ const begin=()=>{if(started)return;started=true;target.textContent="CLICK ME!";target.classList.add("running");clickDashTimer=setInterval(()=>{left--;$("#dashTime").textContent=left;if(left<=0){clearInterval(clickDashTimer);clickDashTimer=null;started=false;target.disabled=true;target.textContent="TIME!";$("#dashMessage").textContent=`Final score: ${score} clicks. Try to beat it!`;target.classList.remove("running")}},1000)};
+ target.addEventListener("click",()=>{if(target.disabled)return;if(!started){begin();return}score++;$("#dashScore").textContent=score});
+ $("#dashAgain").addEventListener("click",()=>{if(clickDashTimer)clearInterval(clickDashTimer);clickDashTimer=null;renderClickDash()});
+}
+function renderReaction(){
+ if(reactionTimeout){clearTimeout(reactionTimeout);reactionTimeout=null}
+ $("#modalTitle").textContent="Reaction Rush";$("#gameInstructions").textContent="Wait for green, then tap once. False starts count!";
+ $("#modalBody").innerHTML=`<div class="game-shell mini-game"><button id="reactionTarget" class="reaction-target" type="button">Tap to start</button><p id="reactionMessage" class="game-help">Wait until the button turns green.</p><button id="reactionAgain" class="button button-quiet" type="button">Try again</button></div>`;
+ let phase="ready",startedAt=0;const target=$("#reactionTarget"),msg=$("#reactionMessage");
+ const start=()=>{if(reactionTimeout)clearTimeout(reactionTimeout);phase="waiting";target.className="reaction-target waiting";target.textContent="Wait…";msg.textContent="Don't click until it turns green!";reactionTimeout=setTimeout(()=>{phase="go";startedAt=performance.now();target.className="reaction-target go";target.textContent="CLICK!"},1200+Math.random()*2600)};
+ target.addEventListener("click",()=>{if(phase==="ready"){start();return}if(phase==="waiting"){clearTimeout(reactionTimeout);phase="ready";target.className="reaction-target";target.textContent="False start!";msg.textContent="Too soon! Tap to try again.";return}if(phase==="go"){const ms=Math.round(performance.now()-startedAt);phase="ready";target.className="reaction-target";target.textContent=`${ms} ms`;msg.textContent=ms<220?"Lightning fast!":ms<320?"Nice reflexes!":"Good try — can you go faster?"}});
+ $("#reactionAgain").addEventListener("click",()=>renderReaction());
+}
+function renderTicTacToe(){
+ $("#modalTitle").textContent="Tiny Tic-Tac-Toe";$("#gameInstructions").textContent="Two players, one device. X goes first.";
+ $("#modalBody").innerHTML=`<div class="game-shell mini-game"><div id="tttStatus" class="game-help">X's turn</div><div id="tttBoard" class="ttt-board">${Array.from({length:9},(_,i)=>`<button class="ttt-cell" data-cell="${i}" aria-label="Cell ${i+1}"></button>`).join("")}</div><button id="tttReset" class="button button-quiet" type="button">New round</button></div>`;
+ tttState={cells:Array(9).fill(""),turn:"X",done:false};const board=$("#tttBoard"),status=$("#tttStatus");
+ const reset=()=>{tttState={cells:Array(9).fill(""),turn:"X",done:false};board.querySelectorAll("button").forEach(b=>{b.textContent="";b.disabled=false;b.classList.remove("winner")});status.textContent="X's turn"};
+ const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+ board.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{const i=Number(b.dataset.cell),s=tttState;if(s.done||s.cells[i])return;s.cells[i]=s.turn;b.textContent=s.turn;b.classList.add(s.turn.toLowerCase());const win=wins.find(line=>line.every(n=>s.cells[n]===s.turn));if(win){s.done=true;win.forEach(n=>board.querySelector(`[data-cell="${n}"]`).classList.add("winner"));status.textContent=`${s.turn} wins!`;board.querySelectorAll("button").forEach(x=>x.disabled=true)}else if(s.cells.every(Boolean)){s.done=true;status.textContent="It's a draw!"}else{s.turn=s.turn==="X"?"O":"X";status.textContent=`${s.turn}'s turn`}}));
+ $("#tttReset").addEventListener("click",reset);
+}
+function renderSavedRequests(){
+ const holder=$("#savedRequests");if(!holder)return;
+ holder.innerHTML=savedRequests.length?`<strong class="saved-heading">Saved on this device (${savedRequests.length})</strong>`+savedRequests.map((r,i)=>`<div class="saved-request"><div><strong>${escapeHtml(r.name)}</strong>${r.url?`<small>${escapeHtml(r.url)}</small>`:""}${r.reason?`<p>${escapeHtml(r.reason)}</p>`:""}</div><button type="button" class="text-button" data-delete-request="${i}" aria-label="Delete ${escapeHtml(r.name)}">Remove</button></div>`).join(""):"";
+}
+function copyText(text){
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>{$("#requestStatus").textContent="Copied! Paste the suggestions wherever you want to send them."}).catch(()=>fallbackCopy(text))}else fallbackCopy(text)
+}
+function fallbackCopy(text){const area=document.createElement("textarea");area.value=text;document.body.appendChild(area);area.select();let ok=false;try{ok=document.execCommand("copy")}catch{}area.remove();$("#requestStatus").textContent=ok?"Copied! Paste the suggestions wherever you want to send them.":"Copy wasn't available here. You can select and copy the text from the saved suggestions."}
+
 document.addEventListener("click",e=>{
  const fav=e.target.closest("[data-fav]");if(fav){const id=fav.dataset.fav;favorites.has(id)?favorites.delete(id):favorites.add(id);saveStorage();renderGames();return}
  const play=e.target.closest("[data-play]");if(play){openGame(play.dataset.play);return}
@@ -132,4 +188,11 @@ document.addEventListener("keydown",e=>{
  if(activeGame==="snake"&&!$("#gameModal").classList.contains("hidden")){const map={ArrowUp:"up",w:"up",ArrowDown:"down",s:"down",ArrowLeft:"left",a:"left",ArrowRight:"right",d:"right"};if(map[e.key]){e.preventDefault();setSnakeDirection(map[e.key])}}
 });
 $("#backTop").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+$("#randomGameButton").addEventListener("click",()=>{const pool=GAMES.filter(g=>activeFilter==="All"||g.category===activeFilter||activeFilter==="Favorites"&&favorites.has(g.id)||activeFilter==="Recent"&&recent.includes(g.id));const choices=pool.length?pool:GAMES;const pick=choices[Math.floor(Math.random()*choices.length)];openGame(pick.id)});
+$("#clearHistory").addEventListener("click",()=>{recent=[];saveStorage();renderGames()});
+$("#requestForm").addEventListener("submit",e=>{e.preventDefault();const name=$("#requestName").value.trim(),url=$("#requestUrl").value.trim(),reason=$("#requestReason").value.trim();if(!name)return;savedRequests.unshift({name,url,reason,date:new Date().toISOString()});savedRequests=savedRequests.slice(0,30);try{localStorage.setItem("snailRequests",JSON.stringify(savedRequests))}catch{};$("#requestForm").reset();$("#requestStatus").textContent="Suggestion saved in this browser. Use Copy saved suggestions to share it with the site owner.";renderSavedRequests()});
+$("#copyRequests").addEventListener("click",()=>{const body=savedRequests.map((r,i)=>`${i+1}. ${r.name}${r.url?`\nLink: ${r.url}`:""}${r.reason?`\nWhy: ${r.reason}`:""}`).join("\n\n");if(!body){$("#requestStatus").textContent="No saved suggestions yet.";return}copyText(body)});
+$("#savedRequests").addEventListener("click",e=>{const b=e.target.closest("[data-delete-request]");if(!b)return;savedRequests.splice(Number(b.dataset.deleteRequest),1);try{localStorage.setItem("snailRequests",JSON.stringify(savedRequests))}catch{}renderSavedRequests()});
+try{if(localStorage.getItem("snailLight")==="1")document.body.classList.add("light")}catch{}
+renderSavedRequests();
 renderGames();
