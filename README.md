@@ -33,3 +33,7 @@ Edit the `GAMES` array near the top of `script.js`. Each item uses a unique `id`
 
 ## Access note
 External sites may change, require accounts, or be unavailable on particular networks. This project does not hide traffic or bypass network controls; use sites permitted by your school or network administrator.
+
+
+## Google Sites
+Keep GitHub Pages as the hosted game library, then embed or link to https://h-droid146.github.io/the-congested-snail/ from Google Sites. To use a custom Google Sites address, publish the site and choose an available web address in Google Sites settings; availability and school-account restrictions are controlled by Google Workspace administrators.
