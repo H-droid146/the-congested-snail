@@ -1,5 +1,5 @@
 # The Congested Snail — Upgrade Pack
-
+THIS WAS CREATED WITH AI
 A responsive browser-game hub built with plain HTML, CSS, and JavaScript. No build tools, framework, server, or API key are required.
 
 ## What's included
